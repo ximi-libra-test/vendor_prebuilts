@@ -1,0 +1,84 @@
+//
+// Copyright (C) 2011 The Android Open-Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+// WARNING: Everything listed here will be built on ALL platforms,
+// including x86, the emulator, and the SDK.  Modules must be uniquely
+// named (liblights.panda), and must build everywhere, or limit themselves
+// to only building on ARM if they include assembly. Individual makefiles
+// are responsible for having their own logic, for fine-grained control.
+
+// Aperture
+android_app_import {
+    name: "Aperture",
+    dex_preopt: {
+        enabled: true,
+    },
+    overrides: [
+        "Camera2",
+        "Snap",
+    ],
+    // https://github.com/LineageOS/android_packages_apps_Aperture/actions/runs/14591360094
+    apk: "Aperture-72cc51b.apk",
+    presigned: true,
+}
+
+// Glimpse
+android_app_import {
+    name: "Glimpse",
+    dex_preopt: {
+        enabled: true,
+    },
+    overrides: [
+        "Gallery",
+        "Gallery2",
+        "Gallery3D",
+        "GalleryNew3D",
+    ],
+    // https://github.com/LineageOS/android_packages_apps_Glimpse/actions/runs/14198429776
+    // use los 21.0 variant
+    apk: "Glimpse-3787059.apk",
+    presigned: true,
+}
+
+// Twelve
+android_app_import {
+    name: "Twelve",
+    dex_preopt: {
+        enabled: true,
+    },
+    overrides: [
+        "Eleven",
+        "Music",
+        "crDroidMusic",
+    ],
+    // https://github.com/LineageOS/android_packages_apps_Twelve/actions/runs/14601309605
+    apk: "Twelve-4296316.apk",
+    presigned: true,
+}
+
+/*
+in device.mk
+
+# prebuilt replacements
+PRODUCT_PACKAGES += \
+     Aperture \
+     Glimpse
+
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Aperture \
+    Glimpse
+
+*/
